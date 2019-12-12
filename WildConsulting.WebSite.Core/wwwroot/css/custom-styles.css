@@ -1,0 +1,23 @@
+body {
+    padding-top: 56px;
+    min-height: 100vh;
+    position: relative;
+}
+
+.card-body-img {
+    height: 200px;
+    width: 250px;
+}
+
+.map-image {
+    height: 300px;
+    width: 200px;
+}
+
+/*
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+*/
