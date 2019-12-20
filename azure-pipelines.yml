@@ -21,12 +21,12 @@ steps:
   displayName: Restore
   inputs:
     command: restore
-    projects: 'src/**/*.csproj'
+    projects: '**/*.csproj'
     noCache: true
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
-    projects: 'src/**/*.csproj'
+    projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)  --no-restore'        
 - task: DotNetCoreCLI@2
   displayName: Test
