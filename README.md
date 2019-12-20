@@ -1,3 +1,24 @@
+# Wild Consulting Limited
+
+This is the website for Wild Consulting Limited.
+
+## Copyright and License
+
+Website content copyright 2019 Wild Consulting Limited.
+
+Website framework uses the Start Bootstrap Small Business template. See details later in this file.
+
+Code licensed  under the [MIT](https://github.com/BlackrockDigital/startbootstrap-small-business/blob/gh-pages/LICENSE) license.
+
+
+## Code Repository and build pipeline 
+
+Code can be gound at https://github.com/mikeymonster/wildconsultingweb.
+
+Build pipeline can be found at https://dev.azure.com/wildconsultingltd.
+
+
+
 # [Start Bootstrap - Small Business](https://startbootstrap.com/template-overviews/small-business/)
 
 [Small Business](http://startbootstrap.com/template-overviews/small-business/) is a responsive marketing landing page template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
