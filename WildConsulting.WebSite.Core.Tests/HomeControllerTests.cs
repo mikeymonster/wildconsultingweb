@@ -19,6 +19,7 @@ namespace WildConsulting.WebSite.Core.Tests
 
             var viewResult = result as ViewResult;
             viewResult.Should().NotBeNull();
+            viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
             viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
         }
 
@@ -34,6 +35,7 @@ namespace WildConsulting.WebSite.Core.Tests
 
             var viewResult = result as ViewResult;
             viewResult.Should().NotBeNull();
+            viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
             viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
         }
         
@@ -49,6 +51,7 @@ namespace WildConsulting.WebSite.Core.Tests
 
             var viewResult = result as ViewResult;
             viewResult.Should().NotBeNull();
+            viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
             viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
         }
     }
