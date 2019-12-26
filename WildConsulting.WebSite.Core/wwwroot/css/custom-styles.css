@@ -5,8 +5,9 @@ body {
 }
 
 .card-body-img {
-    height: 200px;
-    width: 250px;
+    height: 128px;
+    width: 128px;
+    padding-left: 5px;
 }
 
 .map-image {

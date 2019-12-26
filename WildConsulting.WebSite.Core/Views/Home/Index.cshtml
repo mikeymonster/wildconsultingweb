@@ -7,17 +7,18 @@
 <!-- Heading Row -->
 <div class="row align-items-center my-5">
     <div class="col-lg-7">
-        <img class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
+        @* Image downloaded from https://unsplash.com/photos/466ENaLuhLY *@
+        <img class="img-fluid rounded mb-4 mb-lg-0" src="~/images/logo.jpg" alt="Header image - Photo by Markus Spiske on Unsplash">
     </div>
     <!-- /.col-lg-8 -->
     <div class="col-lg-5">
         <h1 class="font-weight-light">Wild Consulting Limited</h1>
         <p>
             Wild Consulting is a software consulting company based in Oxford. We specialize in .NET development including ASP.NET Core websites
-            and Windows WPF and Universal Applications
+            and Windows WPF and Universal Applications.
         </p>
         <p>
-            We also have experience in data with SQL Server and data analysis with R:
+            We also have experience in data with SQL Server and data analysis with R.
         </p>
         <a class="btn btn-primary" asp-controller="Home" asp-action="Contact">Contact us</a>
     </div>
@@ -41,17 +42,19 @@
     <div class="col-md-4 mb-5">
         <div class="card h-100">
             <div class="card-body">
-                <img class="card-body-img" src="~/images/code.png" alt="" />
+                @*https://dryicons.com/icon/code-file-icon-5843*@
+                <img class="card-body-img" src="~/images/code-file-icon.svg" alt="" />
                 <h2 class="card-title">Code</h2>
                 <p class="card-text">Writing code is what we do, whether it's front end web development or back end data support.</p>
-                <p class="card-text">
-                    Web development with ASP.NET Core MVC
-
-                </p>
+                <ul class="card-text">
+                    <li>Web development with ASP.NET Core MVC</li>
+                    <li>Cloud development with Azure</li>
+                </ul>
+                <a href="https://dryicons.com/free-icons/coding">Icon by Dryicons</a>
             </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary btn-sm">More Info</a>
-            </div>
+            @*<div class="card-footer">
+                    <a href="#" class="btn btn-primary btn-sm">More Info</a>
+                </div>*@
         </div>
     </div>
     <!-- /.col-md-4 -->
@@ -59,13 +62,12 @@
     <div class="col-md-4 mb-5">
         <div class="card h-100">
             <div class="card-body">
-                <img class="card-body-img" src="~/images/data.png" alt="" />
+                @*https://dryicons.com/icon/database-search-2790 *@
+                <img class="card-body-img" src="~/images/database_search.png" alt="" />
                 <h2 class="card-title">Data</h2>
                 <p class="card-text">We have been working with SQL Server for many years. We also work with CosmosDb, PostgresSQL and SQLite.</p>
                 <p class="card-text">Outside of databases, we also use R to extract, analyse and visualise data.</p>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary btn-sm">More Info</a>
+                <a href="https://dryicons.com/free-graphics/data-analytics?page=3">Icon by Dryicons</a>
             </div>
         </div>
     </div>
@@ -74,14 +76,12 @@
     <div class="col-md-4 mb-5">
         <div class="card h-100">
             <div class="card-body">
-                <img class="card-body-img" src="~/images/cloud.png" alt="" />
+                @*https://dryicons.com/icon/cloud-computing-icon-6459*@
+                <img class="card-body-img" src="~/images/cloud-computing.svg" alt="" />
                 <h2 class="card-title">Cloud</h2>
-                <p class="card-text">Cloud is ....</p>
-                <p class="card-text">Tying code and data together ....</p>
-                <p class="card-text">Azure functions, Azure search, cloud hosting of websites in Azure and AWS.</p>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary btn-sm">More Info</a>
+                <p class="card-text">Tie your code and data together in the cloud</p>
+                <p class="card-text">We work with Azure functions, Azure search, Continuous Integration and cloud hosting of websites in Azure and AWS.</p>
+                <a href="https://dryicons.com/free-graphics/data-analytics">Icon by Dryicons</a>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@ Code licensed  under the [MIT](https://github.com/BlackrockDigital/startbootstra
 
 ## Code Repository and build pipeline 
 
-Code can be gound at https://github.com/mikeymonster/wildconsultingweb.
+Code can be found at https://github.com/mikeymonster/wildconsultingweb.
 
 Build pipeline can be found at https://dev.azure.com/wildconsultingltd.
 
