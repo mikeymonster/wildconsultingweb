@@ -15,6 +15,11 @@ body {
     width: 200px;
 }
 
+.icon-attribution {
+    position: absolute;
+    bottom: 7px;
+    font-size: 80%;
+}
 /*
 footer {
     position: absolute;
