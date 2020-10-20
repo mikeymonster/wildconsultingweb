@@ -8,7 +8,7 @@ Website content copyright 2019 Wild Consulting Limited.
 
 Website framework uses the Start Bootstrap Small Business template. See details later in this file.
 
-Code licensed  under the [MIT](https://github.com/BlackrockDigital/startbootstrap-small-business/blob/gh-pages/LICENSE) license.
+Code licensed under the [MIT](https://github.com/BlackrockDigital/startbootstrap-small-business/blob/gh-pages/LICENSE) license.
 
 
 ## Code Repository and build pipeline 
