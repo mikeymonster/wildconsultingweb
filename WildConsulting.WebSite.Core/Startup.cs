@@ -12,7 +12,7 @@ namespace WildConsulting.WebSite.Core
         {
             Configuration = configuration;
             Env = env;
-            }
+        }
 
         public IConfiguration Configuration { get; }
         public IWebHostEnvironment Env { get; set; }
