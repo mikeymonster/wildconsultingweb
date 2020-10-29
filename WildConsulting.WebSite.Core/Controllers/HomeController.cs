@@ -11,6 +11,11 @@ namespace WildConsulting.WebSite.Core.Controllers
             return View();
         }
 
+        public IActionResult Apps()
+        {
+            return View();
+        }
+
         public IActionResult About()
         {
             return View();
