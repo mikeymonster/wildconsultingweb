@@ -3,62 +3,44 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name=" description" content="The website of Wild Consulting Limited, a .NET software development company">
     <meta name="author" content="">
 
     <title>Wild Consulting Limited - @ViewData["Title"]</title>
 
-    <!-- Custom styles for this template -->
     <link href="~/css/site.css" rel="stylesheet">
 
+    @* TODO: Add favicon *@
+    @* <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" /> *@
 </head>
 
 <body>
 
-    <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Wild Consulting</a>
-            @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>*@
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">
-                            Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="About">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <nav class="navbar">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <a asp-controller="Home" asp-action="About">About</a>
+        <a asp-controller="Home" asp-action="Apps">Our Apps</a>
+        <a asp-controller="Home" asp-action="Contact">Contact</a>
     </nav>
 
-    <div id="main" class="container">
+    <main id="main">
         <!--[if lt IE 8]>
-            <div class="alert alert-warning" role="alert">
-                <p>You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-            </div>
+        <div class="alert alert-warning" role="alert">
+        <p>You are using an outdated browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        </div>
         <![endif]-->
         @RenderBody()
-    </div>
+    </main>
 
-<footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Wild Consulting Limited 2020</p>
-            <p class="m-0 text-center text-white"><small>Running on @RuntimeInformation.FrameworkDescription</small></p>
-        </div>
+    <footer>
+        <p>Copyright &copy; Wild Consulting Limited 2020</p>
+        <p><small>Running on @RuntimeInformation.FrameworkDescription</small>
     </footer>
-
 </body>
+
 </html>
