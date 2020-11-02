@@ -19,13 +19,13 @@
 </head>
 
 <body>
-
     <a class="skip-main" href="#main">Skip to main content</a>
-    <nav class="navbar">
+
+    <nav>
         <a asp-controller="Home" asp-action="Index">Home</a>
         <a asp-controller="Home" asp-action="About">About</a>
         <a asp-controller="Home" asp-action="Apps">Our Apps</a>
-        <a asp-controller="Home" asp-action="Contact">Contact</a>
+        <a class="last-item" asp-controller="Home" asp-action="Contact">Contact</a>
     </nav>
 
     <main id="main">
