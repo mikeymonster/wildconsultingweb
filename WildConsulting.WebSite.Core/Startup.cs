@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Primitives;
 
 namespace WildConsulting.WebSite.Core
 {
@@ -56,9 +57,17 @@ namespace WildConsulting.WebSite.Core
                 .UseReferrerPolicy(opts => opts.NoReferrer())
                 .UseXXssProtection(opts => opts.EnabledWithBlockMode())
                 .UseXfo(xfo => xfo.Deny())
-                .UseCsp(options => options.ScriptSources(s => s
-                        .Self())
-                    .ObjectSources(s => s.None()));
+                .UseCsp(options => options
+                    .StyleSources(s => s.Self())
+                    .ScriptSources(s => s.Self())
+                    .ObjectSources(s => s.None()))
+                .Use(async (context, next) =>
+                {
+                    context.Response.Headers.Add("Expect-CT", "max-age=0, enforce"); //Not using report-uri=
+                    context.Response.Headers.Add("Feature-Policy", Permissions);
+                    context.Response.Headers.Add("Permissions-Policy", Permissions);
+                    await next.Invoke();
+                });
 
             app.UseStaticFiles();
 
@@ -71,5 +80,37 @@ namespace WildConsulting.WebSite.Core
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+        // ReSharper disable StringLiteralTypo
+        private static StringValues Permissions => new StringValues(
+            "accelerometer 'none';" +
+            "ambient-light-sensor 'none';" +
+            "autoplay 'none';" +
+            "battery 'none';" +
+            "camera 'none';" +
+            "display-capture 'none';" +
+            "document-domain 'none';" +
+            "encrypted-media 'none';" +
+            "execution-while-not-rendered 'none';" +
+            "execution-while-out-of-viewport 'none';" +
+            "fullscreen 'self'" +
+            "geolocation 'none';" +
+            "gyroscope 'none';" +
+            "magnetometer 'none';" +
+            "microphone 'none';" +
+            "midi 'none';" +
+            "navigation-override 'none';" +
+            "notifications 'none';" +
+            "payment 'none';" +
+            "picture-in-picture 'none';" +
+            "publickey-credentials-get 'none';" +
+            "push 'none';" +
+            "speaker 'self';" +
+            "sync-xhr 'none';" +
+            "usb 'none';" +
+            "vibrate 'none';" +
+            "wake-lock 'none';" +
+            "xr-spatial-tracking 'none';");
+        // ReSharper restore StringLiteralTypo
     }
 }
