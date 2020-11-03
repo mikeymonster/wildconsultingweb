@@ -58,6 +58,7 @@ namespace WildConsulting.WebSite.Core
                 .UseXXssProtection(opts => opts.EnabledWithBlockMode())
                 .UseXfo(xfo => xfo.Deny())
                 .UseCsp(options => options
+                    .DefaultSources(s => s.Self())
                     .StyleSources(s => s.Self())
                     .ScriptSources(s => s.Self())
                     .ObjectSources(s => s.None()))
@@ -97,7 +98,6 @@ namespace WildConsulting.WebSite.Core
             "payment 'none';" +
             "picture-in-picture 'none';" +
             "publickey-credentials-get 'none';" +
-            "speaker 'self';" +
             "sync-xhr 'none';" +
             "usb 'none';" +
             "xr-spatial-tracking 'none';");
