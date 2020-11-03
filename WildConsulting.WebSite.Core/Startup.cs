@@ -52,15 +52,13 @@ namespace WildConsulting.WebSite.Core
                 app.UseHsts();
             }
 
-            app.UseXContentTypeOptions();
-            app.UseReferrerPolicy(opts => opts.NoReferrer());
-            app.UseXXssProtection(opts => opts.EnabledWithBlockMode());
-            app.UseXfo(xfo => xfo.Deny());
-
-            app.UseCsp(options => options.ScriptSources(s => s
-                    .StrictDynamic()
-                    .CustomSources("https:"))
-                .ObjectSources(s => s.None()));
+            app.UseXContentTypeOptions()
+                .UseReferrerPolicy(opts => opts.NoReferrer())
+                .UseXXssProtection(opts => opts.EnabledWithBlockMode())
+                .UseXfo(xfo => xfo.Deny())
+                .UseCsp(options => options.ScriptSources(s => s
+                        .Self())
+                    .ObjectSources(s => s.None()));
 
             app.UseStaticFiles();
 
