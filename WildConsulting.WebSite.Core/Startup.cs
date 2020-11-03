@@ -64,8 +64,8 @@ namespace WildConsulting.WebSite.Core
                 .Use(async (context, next) =>
                 {
                     context.Response.Headers.Add("Expect-CT", "max-age=0, enforce"); //Not using report-uri=
-                    context.Response.Headers.Add("Feature-Policy", Permissions);
-                    context.Response.Headers.Add("Permissions-Policy", Permissions);
+                    context.Response.Headers.Add("Feature-Policy", FeaturesList);
+                    context.Response.Headers.Add("Permissions-Policy", PermissionsList);
                     await next.Invoke();
                 });
 
@@ -82,35 +82,45 @@ namespace WildConsulting.WebSite.Core
         }
 
         // ReSharper disable StringLiteralTypo
-        private static StringValues Permissions => new StringValues(
+        private static StringValues FeaturesList => new StringValues(
             "accelerometer 'none';" +
-            "ambient-light-sensor 'none';" +
             "autoplay 'none';" +
-            "battery 'none';" +
             "camera 'none';" +
-            "display-capture 'none';" +
             "document-domain 'none';" +
             "encrypted-media 'none';" +
-            "execution-while-not-rendered 'none';" +
-            "execution-while-out-of-viewport 'none';" +
-            "fullscreen 'self'" +
+            "fullscreen 'self';" +
             "geolocation 'none';" +
             "gyroscope 'none';" +
             "magnetometer 'none';" +
             "microphone 'none';" +
             "midi 'none';" +
-            "navigation-override 'none';" +
-            "notifications 'none';" +
             "payment 'none';" +
             "picture-in-picture 'none';" +
             "publickey-credentials-get 'none';" +
-            "push 'none';" +
             "speaker 'self';" +
             "sync-xhr 'none';" +
             "usb 'none';" +
-            "vibrate 'none';" +
-            "wake-lock 'none';" +
             "xr-spatial-tracking 'none';");
+
+        private static StringValues PermissionsList => new StringValues(
+            "accelerometer=();" +
+            "autoplay=();" +
+            "camera=();" +
+            "document-domain=();" +
+            "encrypted-media=();" +
+            "fullscreen=(self);" +
+            "geolocation=();" +
+            "gyroscope=();" +
+            "magnetometer=();" +
+            "microphone=();" +
+            "midi=();" +
+            "payment=();" +
+            "picture-in-picture=();" +
+            "publickey-credentials-get=();" +
+            "speaker=(self);" +
+            "sync-xhr=();" +
+            "usb=();" +
+            "xr-spatial-tracking=();");
         // ReSharper restore StringLiteralTypo
     }
 }
