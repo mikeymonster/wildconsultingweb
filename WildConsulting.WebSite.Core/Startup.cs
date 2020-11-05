@@ -80,7 +80,6 @@ namespace WildConsulting.WebSite.Core
             });
         }
 
-        // ReSharper disable StringLiteralTypo
         private static StringValues FeaturesList => new StringValues(
             "accelerometer 'none';" +
             "autoplay 'none';" +
@@ -119,6 +118,5 @@ namespace WildConsulting.WebSite.Core
             "sync-xhr=();" +
             "usb=();" +
             "xr-spatial-tracking=();");
-        // ReSharper restore StringLiteralTypo
     }
 }
