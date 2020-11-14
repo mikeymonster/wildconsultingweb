@@ -34,7 +34,8 @@ a {
   align-self: stretch;
   align-items: center;
   transition: box-shadow 1s;
-  text-decoration: no;
+  -webkit-text-decoration: no;
+          text-decoration: no;
 }
 
 a + a {

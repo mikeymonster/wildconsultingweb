@@ -20,9 +20,14 @@ Build pipeline can be found at https://dev.azure.com/wildconsultingltd.
 Play store: https://play.google.com/intl/en_us/badges/
 TODO: Check the layout requirements
 
-App sotre: https://www.stickpng.com/img/download/5a902db97f96951c82922874
+App store: https://www.stickpng.com/img/download/5a902db97f96951c82922874
 
 
 ## Asset generation
 
 In progress - use the R script \Scripts\Workplace Location Map.R to generate a map of places worked.
+
+
+## Tools and Extensions
+
+Uses VSCode Autoprefixer extension. Tu use it, go to the command palette and type `Autoprefixer: Run`
