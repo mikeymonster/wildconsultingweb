@@ -12,8 +12,15 @@
             <strong>Email us:</strong> <a href="mailto:mike@wildconsulting.co.uk">mike@wildconsulting.co.uk</a>
         </p>
         <div>
-            @* ReSharper disable once CommentTypo *@
-            @*<img class="map-image" src="~/images/workplacesmap.png" alt="Map of places we've worked" />*@
+
+        @* ReSharper disable CommentTypo *@
+        @*<picture>
+            <source srcset="~/images/workplacesmap.webp" type="image/webp">
+            <source srcset="~/images/workplacesmap.png" type="image/png">
+            <img class="map-image" src="~/images/workplacesmap.png" alt="Map of places we've worked" />
+        </picture>*@
+        @* ReSharper restore CommentTypo *@
+
         </div>
     </article>
 </section>
