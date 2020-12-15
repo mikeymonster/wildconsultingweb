@@ -70,6 +70,8 @@ namespace WildConsulting.WebSite.Core
                     await next.Invoke();
                 });
 
+            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
