@@ -80,7 +80,7 @@ namespace WildConsulting.WebSite.Core
             });
         }
 
-        private static StringValues FeaturesList => new StringValues(
+        private static StringValues FeaturesList => new(
             "accelerometer 'none';" +
             "autoplay 'none';" +
             "camera 'none';" +
@@ -99,7 +99,7 @@ namespace WildConsulting.WebSite.Core
             "usb 'none';" +
             "xr-spatial-tracking 'none';");
 
-        private static StringValues PermissionsList => new StringValues(
+        private static StringValues PermissionsList => new(
             "accelerometer=();" +
             "autoplay=();" +
             "camera=();" +
