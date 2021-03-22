@@ -1,4 +1,5 @@
-﻿@{
+﻿@using System.Runtime.InteropServices
+@{
     ViewData["Title"] = "About";
 }
 
@@ -10,11 +11,15 @@
             We specialise in .NET development and SQL Server, as well as offering
             expertise in cloud deployment and data analysis with R.
         </p>
+        </article>
+
+    <article>
+        <h2>Our people</h2>
         <p>
-            <strong>Mike Wild</strong> is the Director of Wild Consulting.
-            Originally from New Zealand, he worked for several years in Taiwan before returning home,
-            and came to the UK over 10 years ago. He lives in Oxford and services customers in the south and around the
-            Midlands.
+            <strong>Mike Wild</strong> is the Director and lead developer at Wild Consulting.
+            Originally from New Zealand, he travelled through Asia and lived in Taiwan for several years before returning home, 
+            After over a decade in banking and several years in IT consulting, he came to the UK in 2007. 
+            Mike lives in Oxford and works with customers in the south of England and across the Midlands.
         </p>
         <p>
             Mike is a highly experienced software developer and consultant specializing in Microsoft .NET C# development
@@ -50,5 +55,11 @@
             <li>Microsoft Office development using OpenXML and Office 2010 add-ins</li>
             <li>Microsoft BizTalk 2004/2006/2006 R2</li>
         </ul>
+    </article>
+
+    <article>
+        <h2>About this site</h2>
+        <p>This site has been developed using .NET 5.0 on Visual Studio 2009 and VSCode.</p>
+        <p>The site is running on <code>@RuntimeInformation.FrameworkDescription</code></p>
     </article>
 </section>

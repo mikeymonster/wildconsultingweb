@@ -1,5 +1,4 @@
-﻿@using System.Runtime.InteropServices
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,28 +18,27 @@
 </head>
 
 <body>
-    <a class="skip-main" href="#main">Skip to main content</a>
+<a class="skip-main" href="#main">Skip to main content</a>
 
-    <nav>
-        <a asp-controller="Home" asp-action="Index">Home</a>
-        <a asp-controller="Home" asp-action="About">About</a>
-        <a asp-controller="Home" asp-action="Apps">Our Apps</a>
-        <a class="last-item" asp-controller="Home" asp-action="Contact">Contact</a>
-    </nav>
+<nav>
+    <a asp-controller="Home" asp-action="Index">Home</a>
+    <a asp-controller="Home" asp-action="About">About</a>
+    <a asp-controller="Home" asp-action="Apps">Our Apps</a>
+    <a class="last-item" asp-controller="Home" asp-action="Contact">Contact</a>
+</nav>
 
-    <main id="main">
-        <!--[if lt IE 8]>
+<main id="main">
+    <!--[if lt IE 8]>
         <div class="alert alert-warning" role="alert">
-        <p>You are using an outdated browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <p>You are using an outdated browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         </div>
-        <![endif]-->
-        @RenderBody()
-    </main>
+    <![endif]-->
+    @RenderBody()
+</main>
 
-    <footer>
-        <p>Copyright &copy; Wild Consulting Limited 2020</p>
-        <p><small>Running on @RuntimeInformation.FrameworkDescription</small>
-    </footer>
+<footer>
+    <p>Copyright &copy; Wild Consulting Limited 2020</p>
+</footer>
 </body>
 
 </html>
