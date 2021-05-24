@@ -70,7 +70,7 @@ stages:
       displayName: 'Extract files'
       inputs:
         #archiveFilePatterns: "$(System.ArtifactsDirectory)/*.zip"
-        archiveFilePatterns: '**/*.zip'
+        archiveFilePatterns: '$(agent.builddirectory)/wildconsultingweb/*.zip'
         destinationFolder: '$(agent.builddirectory)'
     - task: FtpUpload@2
       displayName: 'FTP Upload'
