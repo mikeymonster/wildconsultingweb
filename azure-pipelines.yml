@@ -57,8 +57,6 @@ stages:
     - group: wildconsulting
     steps:
     - script: echo $(ftp_server_url)
-    - script: echo $(ftp_user)
-    - script: echo '$(agent.builddirectory)'
     - task: ExtractFiles@1
       displayName: 'Extract files '
       inputs:
@@ -66,11 +64,8 @@ stages:
     - task: FtpUpload@2
       displayName: 'FTP Upload'
       inputs:
-        credentialsOption: inputs
-        serverUrl: '$(ftp_server_url)'
-        username: '$(ftp_user)'
-        password: '$(ftp_password)'
+        serverEndpoint: 'wildconsulting_ftp'
         rootDirectory: '$(agent.builddirectory)'
-        remoteDirectory: '/httpdocs/'
+        remoteDirectory: /httpdocs/
         cleanContents: true
         preservePaths: true
