@@ -62,20 +62,22 @@ stages:
     - script: echo "ArtifactStagingDirectory:" $(Build.ArtifactStagingDirectory)
     - script: echo "agent.builddirectory:" $(agent.builddirectory)
     - script: echo "System.ArtifactsDirectory:" $(System.ArtifactsDirectory)
-    - powershell: Get-ChildItem -Path $(Build.ArtifactStagingDirectory) -recurse
+    #- powershell: Get-ChildItem -Path $(Build.ArtifactStagingDirectory) -recurse
+    - download: current
+      artifact: 'wildconsultingweb'
     - task: ExtractFiles@1
       displayName: 'Extract files'
       inputs:
-        #archiveFilePatterns: "$(Build.ArtifactStagingDirectory)/*.zip"
-        archiveFilePatterns: '**/*.zip'
+        #archiveFilePatterns: "$(System.ArtifactsDirectory)/*.zip"
+        #archiveFilePatterns: '**/*.zip'
         destinationFolder: '$(agent.builddirectory)'
     - task: FtpUpload@2
       displayName: 'FTP Upload'
       inputs:
         credentialsOption: 'serviceEndpoint'
         serverEndpoint: 'wildconsulting_ftp'
-        #rootDirectory: '$(agent.builddirectory)'
-        rootDirectory: '$(System.ArtifactsDirectory)'
+        rootDirectory: '$(agent.builddirectory)'
+        #rootDirectory: '$(System.ArtifactsDirectory)'
         remoteDirectory: /httpdocs/
         cleanContents: true
         preservePaths: true
