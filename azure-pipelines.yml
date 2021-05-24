@@ -60,6 +60,7 @@ stages:
     - group: wildconsulting
     - name: System.Debug
       value: true
+    environment: 'wildconsulting-web-env'
     strategy:
       runOnce:
         deploy:
