@@ -65,11 +65,12 @@ stages:
     #- powershell: Get-ChildItem -Path $(Build.ArtifactStagingDirectory) -recurse
     - download: current
       artifact: 'wildconsultingweb'
+      #Downloaded wildconsultingweb/WildConsulting.WebSite.Core.zip to /home/vsts/work/1/wildconsultingweb/WildConsulting.WebSite.Core.zip
     - task: ExtractFiles@1
       displayName: 'Extract files'
       inputs:
         #archiveFilePatterns: "$(System.ArtifactsDirectory)/*.zip"
-        #archiveFilePatterns: '**/*.zip'
+        archiveFilePatterns: '**/*.zip'
         destinationFolder: '$(agent.builddirectory)'
     - task: FtpUpload@2
       displayName: 'FTP Upload'
