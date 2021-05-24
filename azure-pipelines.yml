@@ -64,10 +64,9 @@ stages:
     - script: echo "agent.builddirectory:" $(agent.builddirectory)
     - script: echo "System.ArtifactsDirectory:" $(System.ArtifactsDirectory)
     - script: echo "Pipeline.Workspace:" $(Pipeline.Workspace)
-    Write-Host "$(Pipeline.Workspace)"
     #- powershell: Get-ChildItem -Path $(Build.ArtifactStagingDirectory) -recurse
-    - download: current
-      artifact: 'wildconsultingweb'
+    #- download: current
+    #  artifact: 'wildconsultingweb'
       #Downloaded wildconsultingweb/WildConsulting.WebSite.Core.zip to /home/vsts/work/1/wildconsultingweb/WildConsulting.WebSite.Core.zip
     - task: ExtractFiles@1
       displayName: 'Extract files'
@@ -75,6 +74,7 @@ stages:
         #archiveFilePatterns: "$(System.ArtifactsDirectory)/*.zip"
         archiveFilePatterns: '$(agent.builddirectory)/wildconsultingweb/*.zip'
         destinationFolder: '$(agent.builddirectory)'
+        #Possibly use (here and below) destinationFolder: '$(Pipeline.Workspace)'
     - task: FtpUpload@2
       displayName: 'FTP Upload'
       inputs:
