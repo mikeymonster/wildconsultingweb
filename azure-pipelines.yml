@@ -52,18 +52,22 @@ stages:
 
 - stage: Deploy
   jobs:
-  - job: Deploy    
+  - job: Deploy
     variables:
     - group: wildconsulting
+    - name: System.Debug
+      value: true
     steps:
     - script: echo $(ftp_server_url)
     - task: ExtractFiles@1
-      displayName: 'Extract files '
+      displayName: 'Extract files'
       inputs:
+        archiveFilePatterns: "$(Build.ArtifactStagingDirectory)/*.zip"
         destinationFolder: '$(agent.builddirectory)'
     - task: FtpUpload@2
       displayName: 'FTP Upload'
       inputs:
+        credentialsOption: 'serviceEndpoint'
         serverEndpoint: 'wildconsulting_ftp'
         rootDirectory: '$(agent.builddirectory)'
         remoteDirectory: /httpdocs/
