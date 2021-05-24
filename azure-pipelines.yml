@@ -76,18 +76,18 @@ stages:
           - task: ExtractFiles@1
             displayName: 'Extract files'
             inputs:
-            #archiveFilePatterns: "$(System.ArtifactsDirectory)/*.zip"
-            archiveFilePatterns: '$(agent.builddirectory)/wildconsultingweb/*.zip'
-            destinationFolder: '$(agent.builddirectory)'
-            #Possibly use (here and below) destinationFolder: '$(Pipeline.Workspace)'
+              #archiveFilePatterns: "$(System.ArtifactsDirectory)/*.zip"
+              archiveFilePatterns: '$(agent.builddirectory)/wildconsultingweb/*.zip'
+              destinationFolder: '$(agent.builddirectory)'
+              #Possibly use (here and below) destinationFolder: '$(Pipeline.Workspace)'
           - task: FtpUpload@2
             displayName: 'FTP Upload'
             inputs:
-            credentialsOption: 'serviceEndpoint'
-            serverEndpoint: 'wildconsulting_ftp'
-            rootDirectory: '$(agent.builddirectory)'
-            #rootDirectory: '$(System.ArtifactsDirectory)'
-            remoteDirectory: /httpdocs/
-            cleanContents: true
-            preservePaths: true
+              credentialsOption: 'serviceEndpoint'
+              serverEndpoint: 'wildconsulting_ftp'
+              rootDirectory: '$(agent.builddirectory)'
+              #rootDirectory: '$(System.ArtifactsDirectory)'
+              remoteDirectory: /httpdocs/
+              cleanContents: true
+              preservePaths: true
    
