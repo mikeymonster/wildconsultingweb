@@ -61,6 +61,7 @@ stages:
     #- script: echo $(ftp_server_url)
     - script: echo "ArtifactStagingDirectory:" $(Build.ArtifactStagingDirectory)
     - script: echo "agent.builddirectory:" $(agent.builddirectory)
+    - script: echo "System.ArtifactsDirectory:" $(System.ArtifactsDirectory)
     - powershell: Get-ChildItem -Path $(Build.ArtifactStagingDirectory) -recurse
     - task: ExtractFiles@1
       displayName: 'Extract files'
@@ -74,7 +75,7 @@ stages:
         credentialsOption: 'serviceEndpoint'
         serverEndpoint: 'wildconsulting_ftp'
         #rootDirectory: '$(agent.builddirectory)'
-        rootDirectory: '$(Build.ArtifactStagingDirectory)'
+        rootDirectory: '$(System.ArtifactsDirectory)'
         remoteDirectory: /httpdocs/
         cleanContents: true
         preservePaths: true
