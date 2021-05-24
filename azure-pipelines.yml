@@ -71,6 +71,7 @@ stages:
         credentialsOption: 'serviceEndpoint'
         serverEndpoint: 'wildconsulting_ftp'
         rootDirectory: '$(agent.builddirectory)'
+        rootDirectory: '$(Build.ArtifactStagingDirectory)'
         remoteDirectory: /httpdocs/
         cleanContents: true
         preservePaths: true
