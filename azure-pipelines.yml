@@ -58,6 +58,7 @@ stages:
     steps:
     - script: echo $(ftp_server_url)
     - script: echo $(ftp_user)
+    - script echo '$(agent.builddirectory)'
     - task: ExtractFiles@1
       displayName: 'Extract files '
       inputs:
@@ -70,6 +71,6 @@ stages:
         username: '$(ftp_user)'
         password: '$(ftp_password)'
         rootDirectory: '$(agent.builddirectory)'
-        remoteDirectory: /httpdocs/
+        remoteDirectory: '/httpdocs/'
         cleanContents: true
         preservePaths: true
