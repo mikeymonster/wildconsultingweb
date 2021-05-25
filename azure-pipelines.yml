@@ -1,7 +1,5 @@
-# ASP.NET Core
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+# Build and deploy we site
+#   Requres a service connection "wildconsulting_ftp" to the FTP target
 
 trigger:
 - master
@@ -55,28 +53,15 @@ stages:
   - deployment: Deploy
     pool:
       vmImage: 'ubuntu-latest'
-    variables:
-    - group: wildconsulting
-    - name: System.Debug
-      value: true
     environment: 'wildconsulting-web-env'
     strategy:
       runOnce:
         deploy:
           steps:
-          - script: echo "ArtifactStagingDirectory:" $(Build.ArtifactStagingDirectory)
-          - script: echo "agent.builddirectory:" $(agent.builddirectory)
-          - script: echo "System.ArtifactsDirectory:" $(System.ArtifactsDirectory)
-          - script: echo "Pipeline.Workspace:" $(Pipeline.Workspace)
-          #- download: current
-          #  artifact: 'wildconsultingweb'
-              #Downloaded wildconsultingweb/WildConsulting.WebSite.Core.zip to /home/vsts/work/1/wildconsultingweb/WildConsulting.WebSite.Core.zip
           - task: ExtractFiles@1
             displayName: 'Extract files'
             inputs:
               archiveFilePatterns: "**/*.zip"
-              #archiveFilePatterns: "$(System.ArtifactsDirectory)/*.zip"
-              #archiveFilePatterns: '$(agent.builddirectory)/wildconsultingweb/*.zip'
               destinationFolder: '$(Pipeline.Workspace)/files'
           - task: FtpUpload@2
             displayName: 'FTP Upload'
@@ -84,7 +69,6 @@ stages:
               credentialsOption: 'serviceEndpoint'
               serverEndpoint: 'wildconsulting_ftp'
               rootDirectory: '$(Pipeline.Workspace)/files'
-              #rootDirectory: '$(System.ArtifactsDirectory)'
               remoteDirectory: /httpdocs/
               cleanContents: true
               preservePaths: true
