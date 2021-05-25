@@ -61,7 +61,7 @@ stages:
           - task: ExtractFiles@1
             displayName: 'Extract files'
             inputs:
-              archiveFilePatterns: "**/*.zip"
+              archiveFilePatterns: "$(agent.builddirectory)/**/*.zip"
               destinationFolder: '$(Pipeline.Workspace)/files'
           - task: FtpUpload@2
             displayName: 'FTP Upload'
