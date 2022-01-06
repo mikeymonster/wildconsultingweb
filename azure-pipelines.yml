@@ -1,11 +1,21 @@
 # Build and deploy web site
 #   Requres a service connection "wildconsulting_ftp" to the FTP target
+# 
+# https://subhankarsarkar.com/dot-net6-azure-web-app-deployment-using-azure-devops-pipeline/
+#
 
 trigger:
 - master
 
 variables:
   buildConfiguration: 'Release'
+  dotNetFramework: 'net6.0'
+  dotNetVersion: '6.0.x'
+  #targetRuntime: 'linux-x64'
+  targetRuntime: 'win-x64'
+  azureSPNName: 'YOUR-SPN-NAME' #get it from your AzureDevOps portal
+  azureAppServiceName: 'Your-Azure-AppService-Name' #get it from your Azure portal
+  ftpServerEndpoint: 'wildconsulting_ftp'
 
 stages:
 - stage: Build
@@ -19,31 +29,38 @@ stages:
       displayName: 'Install .Net SDK'
       inputs:
         packageType: 'sdk'
-        version: '6.0.x'
+        version: $(dotNetVersion)
+
     - task: DotNetCoreCLI@2
       displayName: Restore
       inputs:
         command: restore
         projects: '**/*.csproj'
         noCache: true
+
     - task: DotNetCoreCLI@2
       displayName: Build
       inputs:
         projects: '**/*.csproj'
         arguments: '--configuration $(buildConfiguration)  --no-restore'        
+
     - task: DotNetCoreCLI@2
       displayName: Test
       inputs:
         command: test
         projects: '**/*.Tests.csproj'
         arguments: '--configuration $(buildConfiguration)'
+
     - task: DotNetCoreCLI@2
+      displayName: Publish as self-contained application
       inputs:
         command: publish
         publishWebProjects: True
-        arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+        arguments: '--configuration $(BuildConfiguration) --framework $(dotNetFramework) --runtime $(targetRuntime) --self-contained --output $(Build.ArtifactStagingDirectory)'   
         zipAfterPublish: True
+
     - task: PublishBuildArtifacts@1
+      displayName: Package and upload as a build artifact
       inputs:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
         artifactName: 'wildconsultingweb'
@@ -63,11 +80,12 @@ stages:
             inputs:
               archiveFilePatterns: "$(agent.builddirectory)/**/*.zip"
               destinationFolder: '$(Pipeline.Workspace)/files'
+
           - task: FtpUpload@2
             displayName: 'FTP Upload'
             inputs:
               credentialsOption: 'serviceEndpoint'
-              serverEndpoint: 'wildconsulting_ftp'
+              serverEndpoint: ftpServerEndpoint
               rootDirectory: '$(Pipeline.Workspace)/files'
               remoteDirectory: /httpdocs/
               cleanContents: true
