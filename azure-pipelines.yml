@@ -85,7 +85,7 @@ stages:
             displayName: 'FTP Upload'
             inputs:
               credentialsOption: 'serviceEndpoint'
-              serverEndpoint: ftpServerEndpoint
+              serverEndpoint: $(ftpServerEndpoint)
               rootDirectory: '$(Pipeline.Workspace)/files'
               remoteDirectory: /httpdocs/
               cleanContents: true
