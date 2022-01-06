@@ -9,10 +9,10 @@ public class HomeController : Controller
         return View();
     }
 
-        public IActionResult Apps()
-        {
-            return View();
-        }
+    public IActionResult Apps()
+    {
+        return View();
+    }
 
     public IActionResult About()
     {
