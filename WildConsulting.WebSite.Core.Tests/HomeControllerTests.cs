@@ -3,43 +3,43 @@ using Microsoft.AspNetCore.Mvc;
 using WildConsulting.WebSite.Core.Controllers;
 using Xunit;
 
-namespace WildConsulting.WebSite.Core.Tests
+namespace WildConsulting.WebSite.Core.Tests;
+
+public class HomeControllerTests
 {
-    public class HomeControllerTests
+    [Fact]
+    public void HomeController_Index_Should_Return_ViewResult()
     {
-        [Fact]
-        public void HomeController_Index_Should_Return_ViewResult()
-        {
-            var controller = new HomeController();
+        var controller = new HomeController();
 
-            var result = controller.Index();
+        var result = controller.Index();
 
-            result.Should().NotBeNull();
-            result.Should().BeOfType<ViewResult>();
+        result.Should().NotBeNull();
+        result.Should().BeOfType<ViewResult>();
 
-            var viewResult = result as ViewResult;
-            viewResult.Should().NotBeNull();
-            viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
-            viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
-        }
+        var viewResult = result as ViewResult;
+        viewResult.Should().NotBeNull();
+        viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
+        viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
+    }
 
-        [Fact]
-        public void HomeController_About_Should_Return_ViewResult()
-        {
-            var controller = new HomeController();
+    [Fact]
+    public void HomeController_About_Should_Return_ViewResult()
+    {
+        var controller = new HomeController();
 
-            var result = controller.About();
+        var result = controller.About();
 
-            result.Should().NotBeNull();
-            result.Should().BeOfType<ViewResult>();
+        result.Should().NotBeNull();
+        result.Should().BeOfType<ViewResult>();
 
-            var viewResult = result as ViewResult;
-            viewResult.Should().NotBeNull();
-            viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
-            viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
-        }
+        var viewResult = result as ViewResult;
+        viewResult.Should().NotBeNull();
+        viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
+        viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
+    }
         
-        [Fact]
+    [Fact]
         public void HomeController_Apps_Should_Return_ViewResult()
         {
             var controller = new HomeController();
@@ -56,19 +56,18 @@ namespace WildConsulting.WebSite.Core.Tests
         }
 
         [Fact]
-        public void HomeController_Contact_Should_Return_ViewResult()
-        {
-            var controller = new HomeController();
+    public void HomeController_Contact_Should_Return_ViewResult()
+    {
+        var controller = new HomeController();
 
-            var result = controller.Contact();
+        var result = controller.Contact();
 
-            result.Should().NotBeNull();
-            result.Should().BeOfType<ViewResult>();
+        result.Should().NotBeNull();
+        result.Should().BeOfType<ViewResult>();
 
-            var viewResult = result as ViewResult;
-            viewResult.Should().NotBeNull();
-            viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
-            viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
-        }
+        var viewResult = result as ViewResult;
+        viewResult.Should().NotBeNull();
+        viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
+        viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
     }
 }

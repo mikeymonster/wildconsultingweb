@@ -5,7 +5,7 @@ This is the website for Wild Consulting Limited.
 
 ## Copyright and License
 
-Website code and content copyright 2019-2020 Wild Consulting Limited.
+Website code and content copyright 2019-2022 Wild Consulting Limited.
 
 
 ## Code Repository and build pipeline 
