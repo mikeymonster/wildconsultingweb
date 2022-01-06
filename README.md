@@ -4,7 +4,7 @@ This is the website for Wild Consulting Limited.
 
 ## Copyright and License
 
-Website content copyright 2019 Wild Consulting Limited.
+Website code and content copyright 2019-2020 Wild Consulting Limited.
 
 Website framework uses the Start Bootstrap Small Business template. See details later in this file.
 
