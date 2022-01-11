@@ -1,11 +1,13 @@
-﻿@{
-    ViewData["Title"] = "Home";
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
 }
 
 <div>
     <div class="banner">
         @* Image downloaded from https://unsplash.com/photos/466ENaLuhLY *@
-        <a asp-controller="Home" asp-action="Index">
+        <a asp-page="/Index">
             @* ReSharper disable MarkupAttributeTypo *@
             <img src="~/images/logo.jpg" alt="Header image - Photo by Markus Spiske on Unsplash">
             @* ReSharper restore MarkupAttributeTypo *@
@@ -14,15 +16,15 @@
     <div>
         <h1>Wild Consulting Limited</h1>
         <p>
-            Wild Consulting is a software consulting company based in Oxford. 
+            Wild Consulting is a software consulting company based in Oxford.
         </p>
         <blockquote>
             We specialize in .NET development including ASP.NET Core websites,
             Windows WPF and Xamarin Forms Applications.
-            <br/>
+            <br />
             We also have extensive experience in data with SQL Server and data analysis with R.
         </blockquote>
-        <a class="link-btn" asp-controller="Home" asp-action="Contact">Contact us</a>
+        <a class="link-btn" asp-page="/Contact">Contact us</a>
     </div>
 </div>
 
@@ -53,19 +55,17 @@
     <div class="card">
         <div class="card-body">
             @*https://dryicons.com/icon/database-search-2790 *@
-                <picture>
-                    <source srcset="~/images/database_search.webp" type="image/webp">
-                    <source srcset="~/images/database_search.png" type="image/png">
-            <img src="~/images/database_search.png" alt="" />
-                </picture>
+            <picture>
+                <source srcset="~/images/database_search.webp" type="image/webp">
+                <source srcset="~/images/database_search.png" type="image/png">
+                <img src="~/images/database_search.png" alt="" />
+            </picture>
             <h2 class="card-title">Data</h2>
             <p class="card-text">We have been working with SQL Server for many years. We also work with CosmosDb, PostgresSQL and SQLite.</p>
             <p class="card-text">Outside of databases, we also use R to extract, analyse and visualise data.</p>
             <a class="icon-attribution" href="https://dryicons.com/free-graphics/data-analytics?page=3">Icon by Dryicons</a>
         </div>
     </div>
-
-
 
     <div class="card">
         <div class="card-body">
