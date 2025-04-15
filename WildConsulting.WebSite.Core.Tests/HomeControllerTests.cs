@@ -1,7 +1,5 @@
-using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using WildConsulting.WebSite.Core.Controllers;
-using Xunit;
 
 namespace WildConsulting.WebSite.Core.Tests;
 
@@ -19,8 +17,8 @@ public class HomeControllerTests
 
         var viewResult = result as ViewResult;
         viewResult.Should().NotBeNull();
-        viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
-        viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
+        viewResult.ViewData.ModelState.IsValid.Should().BeTrue();
+        viewResult.ViewData.ModelState.ErrorCount.Should().Be(0);
     }
 
     [Fact]
@@ -35,8 +33,8 @@ public class HomeControllerTests
 
         var viewResult = result as ViewResult;
         viewResult.Should().NotBeNull();
-        viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
-        viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
+        viewResult.ViewData.ModelState.IsValid.Should().BeTrue();
+        viewResult.ViewData.ModelState.ErrorCount.Should().Be(0);
     }
         
     [Fact]
@@ -51,7 +49,7 @@ public class HomeControllerTests
 
         var viewResult = result as ViewResult;
         viewResult.Should().NotBeNull();
-        viewResult?.ViewData.ModelState.IsValid.Should().BeTrue();
-        viewResult?.ViewData.ModelState.ErrorCount.Should().Be(0);
+        viewResult.ViewData.ModelState.IsValid.Should().BeTrue();
+        viewResult.ViewData.ModelState.ErrorCount.Should().Be(0);
     }
 }
