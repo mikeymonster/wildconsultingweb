@@ -1,11 +1,7 @@
-﻿using System.Linq;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Net.Mime;
-using System.Threading.Tasks;
-using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using WildConsulting.WebSite.Core.Pages;
-using Xunit;
 
 namespace WildConsulting.WebSite.Core.Tests;
 public class HeaderTests : IClassFixture<WebApplicationFactory<IndexModel>>

@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using WildConsulting.WebSite.Core.Security;
+﻿using WildConsulting.WebSite.Core.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 

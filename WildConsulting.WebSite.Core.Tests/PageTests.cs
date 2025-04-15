@@ -1,17 +1,10 @@
-﻿using System.Threading.Tasks;
-using FluentAssertions;
-using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Mvc.Testing;
 using WildConsulting.WebSite.Core.Pages;
-using Xunit;
 
 namespace WildConsulting.WebSite.Core.Tests;
-public class PageTests : IClassFixture<WebApplicationFactory<IndexModel>>
+public class PageTests(WebApplicationFactory<IndexModel> fixture) : IClassFixture<WebApplicationFactory<IndexModel>>
 {
-    private readonly WebApplicationFactory<IndexModel> _fixture;
-    public PageTests(WebApplicationFactory<IndexModel> factory)
-    {
-        _fixture = factory;
-    }
+    private readonly WebApplicationFactory<IndexModel> _fixture = fixture;
 
     [Fact]
     public async Task Get_Index_Returns_Expected_Page()

@@ -30,4 +30,4 @@ In progress - use the R script \Scripts\Workplace Location Map.R to generate a m
 
 ## Tools and Extensions
 
-Uses VSCode Autoprefixer extension. Tu use it, go to the command palette and type `Autoprefixer: Run`
+Uses VSCode Autoprefixer extension. To use it, go to the command palette and type `Autoprefixer: Run`
