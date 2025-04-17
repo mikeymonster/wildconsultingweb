@@ -30,9 +30,9 @@ stages:
     - task: FileTransform@2
       displayName: 'Transform appsettings'
       inputs:
-        folderPath: 'inline'
+        folderPath: '**/'
         fileType: 'json'
-        targetFiles: '**/appsettings.json'
+        targetFiles: 'appsettings.json'
 
 - stage: Build
   jobs:
