@@ -1,4 +1,5 @@
-﻿
+﻿@model ViewModels.ContactViewModel
+
 @{
     ViewData["Title"] = "Contact";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,7 +13,7 @@
             We are based in Oxford and available anywhere in the South and the Midlands.
         </p>
         <p>
-            <strong>Email us:</strong> <a href="mailto:mike@wildconsulting.co.uk">mike@wildconsulting.co.uk</a>
+            <strong>Email us:</strong> <a href="mailto:mike@wildconsulting.co.uk">@Model.Email</a>
         </p>
     </div>
     <div class="col-md-5 mb-5">
