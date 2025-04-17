@@ -8,7 +8,9 @@ trigger:
 - master
 
 variables:
+  group: JsonVariableGroup
   buildConfiguration: 'Release'
+  buildPoolVmImage: 'ubuntu-latest'
   dotNetFramework: 'net6.0'
   dotNetVersion: '6.0.x'
   #targetRuntime: 'linux-x64'
@@ -16,12 +18,26 @@ variables:
   ftpServerEndpoint: 'wildconsulting_ftp'
 
 stages:
+-stage: Transform settings
+  jobs:
+  - job: TransformSettings
+    displayName: 'Transform appsettings'
+    pool:
+      vmImage: $(buildPoolVmImage)
+    steps:
+    - task: FileTransform@2
+      displayName: 'Transform appsettings'
+      inputs:
+        folderPath: 'inline'
+        fileType: 'json'
+        targetFiles: '**/appsettings.json'
+
 - stage: Build
   jobs:
   - job: Build
     displayName: 'Build website'
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage:  $(buildPoolVmImage)
     steps:
     - task: UseDotNet@2
       displayName: 'Install .Net SDK'
@@ -67,7 +83,7 @@ stages:
   jobs:
   - deployment: Deploy
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage:  $(buildPoolVmImage)
     environment: 'wildconsulting-web-env'
     strategy:
       runOnce:
