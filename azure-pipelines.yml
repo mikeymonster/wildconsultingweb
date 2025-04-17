@@ -20,7 +20,7 @@ variables:
   ftpServerEndpoint: 'wildconsulting_ftp'
 
 stages:
-- stage: Transform settings
+- stage: Transform
   jobs:
   - job: TransformSettings
     displayName: 'Transform appsettings'
