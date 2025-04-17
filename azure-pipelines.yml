@@ -30,7 +30,7 @@ stages:
     - task: FileTransform@2
       displayName: 'Transform appsettings'
       inputs:
-        folderPath: '**/'
+        folderPath: '$(System.DefaultWorkingDirectory)/**/*.zipInterfaces'
         jsonTargetFiles: 'appsettings.json'
 
 - stage: Build
