@@ -31,8 +31,7 @@ stages:
       displayName: 'Transform appsettings'
       inputs:
         folderPath: '**/'
-        fileType: 'json'
-        targetFiles: 'appsettings.json'
+        jsonTargetFiles: 'appsettings.json'
 
 - stage: Build
   jobs:
