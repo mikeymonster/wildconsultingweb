@@ -22,17 +22,15 @@ public class HeaderTests(WebApplicationFactory<IndexModel> factory) : IClassFixt
         response.Content.Headers.ContentType.Should().NotBeNull();
         response.Content.Headers.ContentType!.MediaType.Should().Be(MediaTypeNames.Text.Html);
 
-        /*
-        response.Headers.Should().ContainKey("Feature-Policy");
-        response.Headers.Should().ContainKey("Permissions-Policy");
+        //response.Headers.Should().ContainKey("Feature-Policy");
+        //response.Headers.Should().ContainKey("Permissions-Policy");
         response.Headers.Should().ContainKey("X-Frame-Options");
-        response.Headers.Should().ContainKey("X-XSS-Protection");
-        response.Headers.Should().ContainKey("X-Content-Type-Options");
+        //response.Headers.Should().ContainKey("X-XSS-Protection");
+        //response.Headers.Should().ContainKey("X-Content-Type-Options");
 
-        ValidateHeader(response.Headers, "X-Frame-Options", "Deny");
-        ValidateHeader(response.Headers, "X-Content-Type-Options", "nosniff");
-        ValidateHeader(response.Headers, "Referrer-Policy", "no-referrer");
-        */
+        //ValidateHeader(response.Headers, "X-Frame-Options", "Deny");
+        //ValidateHeader(response.Headers, "X-Content-Type-Options", "nosniff");
+        //ValidateHeader(response.Headers, "Referrer-Policy", "no-referrer");
     }
 
     private static void ValidateHeader(HttpResponseHeaders headers, string name, string value)

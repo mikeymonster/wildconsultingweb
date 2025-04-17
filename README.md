@@ -18,6 +18,10 @@ Code can be found at https://github.com/mikeymonster/wildconsultingweb.
 Build pipeline can be found at https://dev.azure.com/wildconsultingltd.
 
 
+## Security
+
+Web site security headers are configured in `Program.cs` using using [NetEscapades.AspNetCore.SecurityHeaders](https://github.com/andrewlock/NetEscapades.AspNetCore.SecurityHeaders). 
+
 
 # [Start Bootstrap - Small Business](https://startbootstrap.com/template-overviews/small-business/)
 

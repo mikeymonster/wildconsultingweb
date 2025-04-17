@@ -7,4 +7,8 @@
     <UserSecretsId>954957c2-372d-4632-91b2-9fbfe870dd5e</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="1.0.0" />
+  </ItemGroup>
+
 </Project>
