@@ -38,8 +38,6 @@ stages:
     #     cat WildConsulting.WebSite.Core/appsettings.json
 
 - stage: Build
-  variables:
-  - group: AppSettingsVariables
   jobs:
   - job: Build
     displayName: 'Build website'
