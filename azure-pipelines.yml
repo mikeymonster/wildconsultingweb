@@ -33,6 +33,8 @@ stages:
         folderPath: 'WildConsulting.WebSite.Core/**/'
         xmlTransformationRules: false
         jsonTargetFiles: 'appsettings.json'
+    -bash: |
+        cat appsettings.json
 
 - stage: Build
   jobs:
@@ -80,6 +82,20 @@ stages:
       inputs:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
         artifactName: 'wildconsultingweb'
+
+- stage: Transform2
+  jobs:
+  - job: TransformSettings2
+    displayName: 'Transform appsettings'
+    pool:
+      vmImage: $(buildPoolVmImage)
+    steps:
+    - task: FileTransform@2
+      displayName: 'Transform appsettings'
+      inputs:
+        folderPath: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+        xmlTransformationRules: false
+        jsonTargetFiles: '**/appsettings.json'
 
 - stage: Deploy
   jobs:
