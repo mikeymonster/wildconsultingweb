@@ -34,7 +34,7 @@ stages:
         xmlTransformationRules: false
         jsonTargetFiles: 'appsettings.json'
     - bash: |
-        cat appsettings.json
+        cat WildConsulting.WebSite.Core/appsettings.json
 
 - stage: Build
   jobs:
