@@ -21,6 +21,9 @@ variables:
 
 stages:
 - stage: Transform
+  variables:
+    
+  buildConfiguration: 'Release'
   jobs:
   - job: TransformSettings
     displayName: 'Transform appsettings'
@@ -32,9 +35,9 @@ stages:
       inputs:
         # folderPath: 'WildConsulting.WebSite.Core/**/'
         folderPath: '$(System.DefaultWorkingDirectory)/**/'
+        xmlTransformationRules: ''
         jsonTargetFiles: '**/appsettings.json'
         # jsonTargetFiles: 'appsettings.json'
-        xmlTransformationRules: ''
     - bash: |
         cat WildConsulting.WebSite.Core/appsettings.json
 
