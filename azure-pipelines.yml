@@ -21,7 +21,7 @@ variables:
 stages:
 - stage: Transform
   variables:
-    group: JsonVariableGroup
+  - group: JsonVariableGroup
     # ContactSettings.Email: "testing.testing@testing.co.uk"
   jobs:
   - job: TransformSettings
@@ -44,7 +44,7 @@ stages:
 
 - stage: Build
   variables:
-    group: AppSettingsVariables
+  - group: AppSettingsVariables
   jobs:
   - job: Build
     displayName: 'Build website'
