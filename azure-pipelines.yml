@@ -19,10 +19,27 @@ variables:
   ftpServerEndpoint: 'wildconsulting_ftp'
 
 stages:
-
-- stage: Build
+- stage: Transform
   variables:
   - group: WildConsultingWebAppSettings
+  jobs:
+  - job: TransformSettings
+    displayName: 'Transform appsettings'
+    pool:
+      vmImage: $(buildPoolVmImage)
+    steps:
+    - task: FileTransform@2
+      displayName: 'Transform appsettings'
+      inputs:
+        folderPath: '$(System.DefaultWorkingDirectory)/**/'
+        xmlTransformationRules: ''
+        jsonTargetFiles: '**/appsettings.json'
+    # - bash: |
+    #     cat WildConsulting.WebSite.Core/appsettings.json
+
+- stage: Build
+  # variables:
+  # - group: WildConsultingWebAppSettings
   jobs:
   - job: Build
     displayName: 'Build website'
@@ -63,12 +80,12 @@ stages:
         arguments: '--configuration $(BuildConfiguration) --framework $(dotNetFramework) --runtime $(targetRuntime) --self-contained --output $(Build.ArtifactStagingDirectory)'
         zipAfterPublish: True
 
-    - task: FileTransform@2
-      displayName: 'Transform appsettings'
-      inputs:
-        folderPath: '$(Build.ArtifactStagingDirectory)/**/*.zip'
-        xmlTransformationRules: ''
-        jsonTargetFiles: '**/appsettings.json'
+    # - task: FileTransform@2
+    #   displayName: 'Transform appsettings'
+    #   inputs:
+    #     folderPath: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    #     xmlTransformationRules: ''
+    #     jsonTargetFiles: '**/appsettings.json'
 
     - task: PublishBuildArtifacts@1
       displayName: Package and upload as a build artifact
