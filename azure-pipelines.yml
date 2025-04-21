@@ -29,7 +29,7 @@ stages:
     pool:
       vmImage: $(buildPoolVmImage)
     steps:
-    - script: echo '$(ContactSettings.Email)'
+    - script: echo $(ContactSettings.Email)
 
     - task: FileTransform@2
       displayName: 'Transform appsettings'
