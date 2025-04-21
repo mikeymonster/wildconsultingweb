@@ -93,7 +93,7 @@ stages:
     - task: FileTransform@2
       displayName: 'Transform appsettings'
       inputs:
-        folderPath: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+        folderPath: '$(agent.builddirectory)/**/*.zip'
         xmlTransformationRules: false
         jsonTargetFiles: '**/appsettings.json'
 
