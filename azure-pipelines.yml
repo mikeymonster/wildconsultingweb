@@ -33,7 +33,7 @@ stages:
         folderPath: 'WildConsulting.WebSite.Core/**/'
         xmlTransformationRules: false
         jsonTargetFiles: 'appsettings.json'
-    -bash: |
+    - bash: |
         cat appsettings.json
 
 - stage: Build
