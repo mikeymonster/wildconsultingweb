@@ -23,7 +23,6 @@ stages:
 - stage: Transform
   variables:
     ContactSettings.Email: "testing.testing@testing.co.uk"
-  buildConfiguration: 'Release'
   jobs:
   - job: TransformSettings
     displayName: 'Transform appsettings'
