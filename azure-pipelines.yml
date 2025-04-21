@@ -19,27 +19,6 @@ variables:
   ftpServerEndpoint: 'wildconsulting_ftp'
 
 stages:
-# - stage: Transform
-#   variables:
-#   - group: WildConsultingWebAppSettings
-#   jobs:
-#   - job: TransformSettings
-#     displayName: 'Transform appsettings'
-#     pool:
-#       vmImage: $(buildPoolVmImage)
-#     steps:
-#     - script: echo $(ContactSettings.Email)
-
-#     - task: FileTransform@2
-#       displayName: 'Transform appsettings'
-#       inputs:
-#         # folderPath: 'WildConsulting.WebSite.Core/**/'
-#         folderPath: '$(System.DefaultWorkingDirectory)/**/'
-#         xmlTransformationRules: ''
-#         jsonTargetFiles: '**/appsettings.json'
-#         # jsonTargetFiles: 'appsettings.json'
-#     - bash: |
-#         cat WildConsulting.WebSite.Core/appsettings.json
 
 - stage: Build
   variables:
@@ -122,4 +101,3 @@ stages:
               remoteDirectory: /httpdocs/
               cleanContents: true
               preservePaths: true
-   
