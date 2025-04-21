@@ -79,25 +79,18 @@ stages:
         arguments: '--configuration $(BuildConfiguration) --framework $(dotNetFramework) --runtime $(targetRuntime) --self-contained --output $(Build.ArtifactStagingDirectory)'
         zipAfterPublish: True
 
+    - task: FileTransform@2
+      displayName: 'Transform appsettings'
+      inputs:
+        folderPath: '$(System.ArtifactStagingDirectory)/**/*.zip'
+        xmlTransformationRules: false
+        jsonTargetFiles: '**/appsettings.json'
+
     - task: PublishBuildArtifacts@1
       displayName: Package and upload as a build artifact
       inputs:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
         artifactName: 'wildconsultingweb'
-
-- stage: Transform2
-  jobs:
-  - job: TransformSettings2
-    displayName: 'Transform appsettings'
-    pool:
-      vmImage: $(buildPoolVmImage)
-    steps:
-    - task: FileTransform@2
-      displayName: 'Transform appsettings'
-      inputs:
-        folderPath: '$(System.DefaultWorkingDirectory)/**/*.zip'
-        xmlTransformationRules: false
-        jsonTargetFiles: '**/appsettings.json'
 
 - stage: Deploy
   jobs:
