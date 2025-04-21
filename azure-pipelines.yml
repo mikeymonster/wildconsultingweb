@@ -30,9 +30,11 @@ stages:
     - task: FileTransform@2
       displayName: 'Transform appsettings'
       inputs:
-        folderPath: 'WildConsulting.WebSite.Core/**/'
-        xmlTransformationRules: false
-        jsonTargetFiles: 'appsettings.json'
+        # folderPath: 'WildConsulting.WebSite.Core/**/'
+        folderPath: '$(System.DefaultWorkingDirectory)/**/'
+        xmlTransformationRules: ''
+        # jsonTargetFiles: 'appsettings.json'
+        jsonTargetFiles: '**/appsettings.json'
     - bash: |
         cat WildConsulting.WebSite.Core/appsettings.json
 
@@ -60,7 +62,7 @@ stages:
       displayName: Build
       inputs:
         projects: '**/*.csproj'
-        arguments: '--configuration $(buildConfiguration)  --no-restore'        
+        arguments: '--configuration $(buildConfiguration)  --no-restore'
 
     - task: DotNetCoreCLI@2
       displayName: Test
@@ -74,7 +76,7 @@ stages:
       inputs:
         command: publish
         publishWebProjects: True
-        arguments: '--configuration $(BuildConfiguration) --framework $(dotNetFramework) --runtime $(targetRuntime) --self-contained --output $(Build.ArtifactStagingDirectory)'   
+        arguments: '--configuration $(BuildConfiguration) --framework $(dotNetFramework) --runtime $(targetRuntime) --self-contained --output $(Build.ArtifactStagingDirectory)'
         zipAfterPublish: True
 
     - task: PublishBuildArtifacts@1
@@ -93,7 +95,7 @@ stages:
     - task: FileTransform@2
       displayName: 'Transform appsettings'
       inputs:
-        folderPath: '$(agent.builddirectory)/**/*.zip'
+        folderPath: '$(System.DefaultWorkingDirectory)/**/*.zip'
         xmlTransformationRules: false
         jsonTargetFiles: '**/appsettings.json'
 
@@ -110,7 +112,7 @@ stages:
           - task: ExtractFiles@1
             displayName: 'Extract files'
             inputs:
-              archiveFilePatterns: "$(agent.builddirectory)/**/*.zip"
+              archiveFilePatterns: "$(System.builddirectory)/**/*.zip"
               destinationFolder: '$(Pipeline.Workspace)/files'
 
           - task: FtpUpload@2
