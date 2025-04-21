@@ -41,6 +41,8 @@ stages:
         cat WildConsulting.WebSite.Core/appsettings.json
 
 - stage: Build
+  variables:
+    group: AppSettingsVariables
   jobs:
   - job: Build
     displayName: 'Build website'
@@ -81,12 +83,12 @@ stages:
         arguments: '--configuration $(BuildConfiguration) --framework $(dotNetFramework) --runtime $(targetRuntime) --self-contained --output $(Build.ArtifactStagingDirectory)'
         zipAfterPublish: True
 
-    # - task: FileTransform@2
-    #   displayName: 'Transform appsettings'
-    #   inputs:
-    #     folderPath: '$(Build.ArtifactStagingDirectory)/**/*.zip'
-    #     xmlTransformationRules: ''
-    #     jsonTargetFiles: '**/appsettings.json'
+    - task: FileTransform@2
+      displayName: 'Transform appsettings'
+      inputs:
+        folderPath: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+        xmlTransformationRules: ''
+        jsonTargetFiles: '**/appsettings.json'
 
     - task: PublishBuildArtifacts@1
       displayName: Package and upload as a build artifact
