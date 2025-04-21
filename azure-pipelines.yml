@@ -21,7 +21,7 @@ variables:
 stages:
 # - stage: Transform
 #   variables:
-#   - group: WildConsultingWebAppSettingsVariables
+#   - group: WildConsultingWebAppSettings
 #   jobs:
 #   - job: TransformSettings
 #     displayName: 'Transform appsettings'
@@ -43,7 +43,7 @@ stages:
 
 - stage: Build
   variables:
-  - group: WildConsultingWebAppSettingsVariables
+  - group: WildConsultingWebAppSettings
   jobs:
   - job: Build
     displayName: 'Build website'
