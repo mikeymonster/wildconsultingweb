@@ -10,7 +10,6 @@ trigger:
 pr: none # Disable PR trigger
 
 variables:
-  group: JsonVariableGroup
   buildConfiguration: 'Release'
   buildPoolVmImage: 'ubuntu-latest'
   dotNetFramework: 'net8.0'
@@ -22,7 +21,8 @@ variables:
 stages:
 - stage: Transform
   variables:
-    ContactSettings.Email: "testing.testing@testing.co.uk"
+    group: JsonVariableGroup
+    # ContactSettings.Email: "testing.testing@testing.co.uk"
   jobs:
   - job: TransformSettings
     displayName: 'Transform appsettings'
@@ -81,12 +81,12 @@ stages:
         arguments: '--configuration $(BuildConfiguration) --framework $(dotNetFramework) --runtime $(targetRuntime) --self-contained --output $(Build.ArtifactStagingDirectory)'
         zipAfterPublish: True
 
-    - task: FileTransform@2
-      displayName: 'Transform appsettings'
-      inputs:
-        folderPath: '$(Build.ArtifactStagingDirectory)/**/*.zip'
-        xmlTransformationRules: ''
-        jsonTargetFiles: '**/appsettings.json'
+    # - task: FileTransform@2
+    #   displayName: 'Transform appsettings'
+    #   inputs:
+    #     folderPath: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    #     xmlTransformationRules: ''
+    #     jsonTargetFiles: '**/appsettings.json'
 
     - task: PublishBuildArtifacts@1
       displayName: Package and upload as a build artifact
@@ -107,7 +107,7 @@ stages:
           - task: ExtractFiles@1
             displayName: 'Extract files'
             inputs:
-              archiveFilePatterns: "$(System.builddirectory)/**/*.zip"
+              archiveFilePatterns: "$(agent.builddirectory)/**/*.zip"
               destinationFolder: '$(Pipeline.Workspace)/files'
 
           - task: FtpUpload@2
