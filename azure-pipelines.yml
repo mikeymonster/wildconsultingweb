@@ -19,23 +19,6 @@ variables:
   ftpServerEndpoint: 'wildconsulting_ftp'
 
 stages:
-# - stage: Transform
-#   variables:
-#   - group: WildConsultingWebAppSettings
-#   jobs:
-#   - job: TransformSettings
-#     displayName: 'Transform appsettings'
-#     pool:
-#       vmImage: $(buildPoolVmImage)
-#     steps:
-#     - task: FileTransform@2
-#       displayName: 'Transform appsettings'
-#       inputs:
-#         folderPath: '$(System.DefaultWorkingDirectory)/**/'
-#         xmlTransformationRules: ''
-#         jsonTargetFiles: '**/appsettings.json'
-#     # - bash: |
-#     #     cat WildConsulting.WebSite.Core/appsettings.json
 
 - stage: Build
 
