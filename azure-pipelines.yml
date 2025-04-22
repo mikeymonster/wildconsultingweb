@@ -17,7 +17,6 @@ variables:
   #targetRuntime: 'linux-x64'
   targetRuntime: 'win-x86'
   ftpServerEndpoint: 'wildconsulting_ftp'
-  - group: WildConsultingWebAppSettings
 
 stages:
 # - stage: Transform
@@ -40,8 +39,8 @@ stages:
 
 - stage: Build
 
-  # variables:
-  # - group: WildConsultingWebAppSettings
+  variables:
+  - group: WildConsultingWebAppSettings
 
   jobs:
   - job: Build
