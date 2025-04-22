@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using WildConsulting.WebSite.Core.ViewModels;
 
 namespace WildConsulting.WebSite.Core.Controllers;
 
-public class HomeController : Controller
+public class HomeController(IConfiguration configuration) : Controller
 {
     public IActionResult Index()
     {
@@ -16,6 +18,8 @@ public class HomeController : Controller
 
     public IActionResult Contact()
     {
-        return View();
+        var emailAddress = configuration["ContactSettings:Email"];
+        var vm = new ContactViewModel(emailAddress);
+        return View(vm);
     }
 }

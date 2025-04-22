@@ -11,6 +11,7 @@ pr: none # Disable PR trigger
 
 variables:
   buildConfiguration: 'Release'
+  buildPoolVmImage: 'ubuntu-latest'
   dotNetFramework: 'net8.0'
   dotNetVersion: '8.0.x'
   #targetRuntime: 'linux-x64'
@@ -18,12 +19,17 @@ variables:
   ftpServerEndpoint: 'wildconsulting_ftp'
 
 stages:
+
 - stage: Build
+
+  variables:
+  - group: WildConsultingWebAppSettings
+
   jobs:
   - job: Build
     displayName: 'Build website'
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage:  $(buildPoolVmImage)
     steps:
     - task: UseDotNet@2
       displayName: 'Install .Net SDK'
@@ -42,7 +48,7 @@ stages:
       displayName: Build
       inputs:
         projects: '**/*.csproj'
-        arguments: '--configuration $(buildConfiguration)  --no-restore'        
+        arguments: '--configuration $(buildConfiguration)  --no-restore'
 
     - task: DotNetCoreCLI@2
       displayName: Test
@@ -56,8 +62,15 @@ stages:
       inputs:
         command: publish
         publishWebProjects: True
-        arguments: '--configuration $(BuildConfiguration) --framework $(dotNetFramework) --runtime $(targetRuntime) --self-contained --output $(Build.ArtifactStagingDirectory)'   
+        arguments: '--configuration $(BuildConfiguration) --framework $(dotNetFramework) --runtime $(targetRuntime) --self-contained --output $(Build.ArtifactStagingDirectory)'
         zipAfterPublish: True
+
+    - task: FileTransform@2
+      displayName: 'Transform appsettings'
+      inputs:
+        folderPath: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+        xmlTransformationRules: ''
+        jsonTargetFiles: '**/appsettings.json'
 
     - task: PublishBuildArtifacts@1
       displayName: Package and upload as a build artifact
@@ -69,7 +82,7 @@ stages:
   jobs:
   - deployment: Deploy
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage:  $(buildPoolVmImage)
     environment: 'wildconsulting-web-env'
     strategy:
       runOnce:
@@ -90,4 +103,3 @@ stages:
               remoteDirectory: /httpdocs/
               cleanContents: true
               preservePaths: true
-   
