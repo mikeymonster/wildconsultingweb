@@ -300,3 +300,6 @@ data/
 
 # Logs
 logs/
+
+# Local development settings files
+**/appsettings.Development*.json
