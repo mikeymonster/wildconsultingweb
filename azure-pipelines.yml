@@ -17,30 +17,31 @@ variables:
   #targetRuntime: 'linux-x64'
   targetRuntime: 'win-x86'
   ftpServerEndpoint: 'wildconsulting_ftp'
+  - group: WildConsultingWebAppSettings
 
 stages:
-- stage: Transform
-  variables:
-  - group: WildConsultingWebAppSettings
-  jobs:
-  - job: TransformSettings
-    displayName: 'Transform appsettings'
-    pool:
-      vmImage: $(buildPoolVmImage)
-    steps:
-    - task: FileTransform@2
-      displayName: 'Transform appsettings'
-      inputs:
-        folderPath: '$(System.DefaultWorkingDirectory)/**/'
-        xmlTransformationRules: ''
-        jsonTargetFiles: '**/appsettings.json'
-    # - bash: |
-    #     cat WildConsulting.WebSite.Core/appsettings.json
+# - stage: Transform
+#   variables:
+#   - group: WildConsultingWebAppSettings
+#   jobs:
+#   - job: TransformSettings
+#     displayName: 'Transform appsettings'
+#     pool:
+#       vmImage: $(buildPoolVmImage)
+#     steps:
+#     - task: FileTransform@2
+#       displayName: 'Transform appsettings'
+#       inputs:
+#         folderPath: '$(System.DefaultWorkingDirectory)/**/'
+#         xmlTransformationRules: ''
+#         jsonTargetFiles: '**/appsettings.json'
+#     # - bash: |
+#     #     cat WildConsulting.WebSite.Core/appsettings.json
 
 - stage: Build
 
-  variables:
-  - group: WildConsultingWebAppSettings
+  # variables:
+  # - group: WildConsultingWebAppSettings
 
   jobs:
   - job: Build
